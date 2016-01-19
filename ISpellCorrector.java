@@ -22,7 +22,8 @@ public interface ISpellCorrector {
 	 * @param inputWord
 	 * @return The suggestion
 	 * @throws NoSimilarWordFoundException If no similar word is in the dictionary
+	 * @throws spell.SpellCorrector.NoSimilarWordFoundException 
 	 */
-	public String suggestSimilarWord(String inputWord) throws NoSimilarWordFoundException;
+	public String suggestSimilarWord(String inputWord) throws NoSimilarWordFoundException, spell.SpellCorrector.NoSimilarWordFoundException;
 
 }

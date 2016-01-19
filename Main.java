@@ -13,9 +13,10 @@ public class Main {
 	/**
 	 * Give the dictionary file name as the first argument and the word to correct
 	 * as the second argument.
+	 * @throws spell.SpellCorrector.NoSimilarWordFoundException 
 	 */
 	@SuppressWarnings("null")
-	public static void main(String[] args) throws NoSimilarWordFoundException, IOException {
+	public static void main(String[] args) throws NoSimilarWordFoundException, IOException, spell.SpellCorrector.NoSimilarWordFoundException {
 		
 		String dictionaryFileName = args[0];
 		String inputWord = args[1];
@@ -23,14 +24,14 @@ public class Main {
 		/**
 		 * Create an instance of your corrector here
 		 */
-		SpellCorrector corrector = new SpellCorrector();
+		ISpellCorrector corrector = new SpellCorrector();
 		
 		corrector.useDictionary(dictionaryFileName);
 		String suggestion = "";
 		
 		try {
 			suggestion = corrector.suggestSimilarWord(inputWord);
-		} catch (spell.SpellCorrector.NoSimilarWordFoundException e) {
+		} catch (spell.ISpellCorrector.NoSimilarWordFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

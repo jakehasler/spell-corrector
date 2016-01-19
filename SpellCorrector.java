@@ -9,14 +9,11 @@ import java.util.Scanner;
 
 import spell.ISpellCorrector.NoSimilarWordFoundException;
 
-public class SpellCorrector {
+public class SpellCorrector  implements ISpellCorrector {
 
 	// Store dictionary on the load
-	
-	Node root = new Node();
-	
-	
-	
+	private Trie theTrie = new Trie();
+		
 	public void readFile(String fileName) {
 		
 		File file = new File("src/editor/" + fileName);
@@ -47,6 +44,8 @@ public class SpellCorrector {
 		
 		File file = new File("src/spell/" + dictionaryFileName);
 		
+		
+		
 		FileReader fr = null;
 		
 		try {
@@ -59,17 +58,38 @@ public class SpellCorrector {
 		
 		BufferedReader br = new BufferedReader(fr);	
 		Scanner sc = new Scanner(br);
+		sc.useDelimiter("[^a-zA-Z]+");
 		
-		root.buildTree(sc.next(), 0, root);
+		int i = 0;
+		while(i < 10) {
+			theTrie.root.buildTree(sc.next(), 0, theTrie.root);
+			i++;
+		}
 		
-		//System.out.println(sc.next());
-		
+		Node project = theTrie.root.exists("project", 0, theTrie.root);
+		System.out.println("project f: " + project.getCount());
+		System.out.println("Word Count: " + theTrie.getWordCount());
+		System.out.println("Node Count: " + theTrie.getNodeCount());
+		System.out.println("HashCode: " + theTrie.hashCode());	
 		
 	}
-	
-	public String suggestSimilarWord(String inputWord) throws NoSimilarWordFoundException {
+
+	public String suggestSimilarWord(String inputWord) throws NoSimilarWordFoundException {	
+
+		theTrie.runFunctions(inputWord, theTrie.bigSet);
+		if(theTrie.bestWord == "" && theTrie.runningFreq == 0) {
+			theTrie.runFunctions(inputWord, theTrie.finalSet);
+		}
 		
-		return "Test";
+		
+		if(theTrie.bestWord == "" && theTrie.runningFreq == 0) {
+			return inputWord;
+		}
+		else {
+			return theTrie.bestWord;
+		}
+		
+		
 	}
 	
 }
