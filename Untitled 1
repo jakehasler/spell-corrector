@@ -131,3 +131,6 @@ add function does not exist
 
 
 in find, check frequency is greater than zero, if not, then return null;
+
+
+throwing file not found exception - fix absolute bath.

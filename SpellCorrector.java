@@ -42,7 +42,7 @@ public class SpellCorrector  implements ISpellCorrector {
 	
 	public void useDictionary(String dictionaryFileName) throws IOException {
 		
-		File file = new File("src/spell/" + dictionaryFileName);
+		File file = new File(dictionaryFileName);
 	
 		FileReader fr = null;
 		
