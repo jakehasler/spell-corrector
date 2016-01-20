@@ -221,10 +221,6 @@ public class Trie implements ITrie {
 			wordMap.put(str, currentNode.getCount());
 			// Incrementing the total word count from the dictionary.
 			
-			if(currentNode.getCount() > 0) {
-				//System.out.println("F: " + currentNode.getCount() + " \'" + str + "\'");
-			}
-			
 			return;
 		}
 		

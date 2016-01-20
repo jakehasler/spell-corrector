@@ -6,15 +6,11 @@ public class Node implements ITrie.INode {
 
 	private int count;
 	private Node[] nodes;
-	
-	public static int wordCount;
-	public static int nodeCount = 1;
+
 	
 	Node() {
 		count = 0;
 		nodes = new Node[26];
-		
-		//nodeCount++;
 	}
 	
 	public Node[] getArray() {
