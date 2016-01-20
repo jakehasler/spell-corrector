@@ -35,12 +35,6 @@ public class SpellCorrector  implements ISpellCorrector {
 		
 	}
 	
-	@SuppressWarnings("serial")
-	public static class NoSimilarWordFoundException extends Exception {
-	
-	}
-	
-	
 	public void useDictionary(String dictionaryFileName) throws IOException {
 		
 		File file = new File(dictionaryFileName);
