@@ -78,13 +78,22 @@ public class SpellCorrector  implements ISpellCorrector {
 			String lowered = inputWord.toLowerCase();
 			Node found = theTrie.find(lowered);
 			if(found != null) {
-				return lowered;
+				if(found.getCount() != 0) {
+					System.out.println(found.getCount());
+					return lowered;
+				}
 			}
 			theTrie.runFunctions(lowered, theTrie.bigSet);
 			if(theTrie.bestWord == "" && theTrie.runningFreq == 0) {
-				theTrie.runFunctions(lowered, theTrie.finalSet);
+				for(Object strObj : theTrie.bigSet) {
+					String str = strObj.toString();
+					theTrie.runFunctions(str, theTrie.finalSet);
+				}
 			}
 			else return theTrie.bestWord;
+			
+			System.out.println(theTrie.bigSet);
+			System.out.println(theTrie.finalSet);
 			
 			if(theTrie.bestWord == "" || theTrie.runningFreq == 0) {
 				throw new NoSimilarWordFoundException();
