@@ -43,9 +43,7 @@ public class SpellCorrector  implements ISpellCorrector {
 	public void useDictionary(String dictionaryFileName) throws IOException {
 		
 		File file = new File("src/spell/" + dictionaryFileName);
-		
-		
-		
+	
 		FileReader fr = null;
 		
 		try {
@@ -61,33 +59,42 @@ public class SpellCorrector  implements ISpellCorrector {
 		sc.useDelimiter("[^a-zA-Z]+");
 		
 		int i = 0;
-		while(i < 10) {
-			theTrie.root.buildTree(sc.next(), 0, theTrie.root);
+		//while(sc.hasNext()) {
+			while(i < 500) {
+			theTrie.buildTree(sc.next(), 0, theTrie.root);
 			i++;
 		}
 		
-		Node project = theTrie.root.exists("project", 0, theTrie.root);
-		System.out.println("project f: " + project.getCount());
-		System.out.println("Word Count: " + theTrie.getWordCount());
-		System.out.println("Node Count: " + theTrie.getNodeCount());
-		System.out.println("HashCode: " + theTrie.hashCode());	
+//		System.out.println("Word Count: " + theTrie.getWordCount());
+//		System.out.println("Node Count: " + theTrie.getNodeCount());
+//		System.out.println("HashCode: " + theTrie.hashCode());	
+//		System.out.println(theTrie.toString());
 		
 	}
 
 	public String suggestSimilarWord(String inputWord) throws NoSimilarWordFoundException {	
 
-		theTrie.runFunctions(inputWord, theTrie.bigSet);
-		if(theTrie.bestWord == "" && theTrie.runningFreq == 0) {
-			theTrie.runFunctions(inputWord, theTrie.finalSet);
-		}
-		
-		
-		if(theTrie.bestWord == "" && theTrie.runningFreq == 0) {
-			return inputWord;
+		if(inputWord != "") {
+			Node found = theTrie.find(inputWord);
+			if(found.getCount() != 0) {
+				return inputWord;
+			}
+			theTrie.runFunctions(inputWord, theTrie.bigSet);
+			if(theTrie.bestWord == "" && theTrie.runningFreq == 0) {
+				theTrie.runFunctions(inputWord, theTrie.finalSet);
+			}
+			
+			if(theTrie.bestWord == "" || theTrie.runningFreq == 0) {
+				throw new NoSimilarWordFoundException();
+			}
+			else {
+				return theTrie.bestWord;
+			}	
 		}
 		else {
-			return theTrie.bestWord;
+			throw new NoSimilarWordFoundException();
 		}
+		
 		
 		
 	}

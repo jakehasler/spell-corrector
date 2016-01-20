@@ -1,0 +1,124 @@
+TODO: 
+Start on edit distance functions
+
+
+
+
+Help Sesh
+========================
+
+be sure to implement every function, for the test driver's sake.
+
+	/* Deletion
+	 * Transposition
+	 * Alteration
+	 * Insertion
+	 * 
+	 * 
+	 * build a set of words from each of the four functions
+	 * When you want to do deletion distance two, run all four functions on each of those word, then put all those words into another set.
+	 */
+	 
+	 
+Use String builder for each function
+strings are immutable, causes for slow processing when running calculations
+
+Object -> All classes inherit from it. 
+
+Equals
+----------
+Is this object equal to the trie. 
+compare two tries, see if they are the same.
+To Check: 
+if(o == null) return false;
+else if(getClass() != o.getClass()) return false;
+else Trie that = (Trie) o;
+compare nodeCount;
+compare wordCount;
+compare each Node that frequency is the same;
+
+Hashcode
+----------
+Way to identify the entire object.
+Consistent Always same hashCode for same trie.
+get constants, multiply them in some way
+ - Same value for given trie
+ 
+toString
+--------------
+Give back whole list of words
+alphabetical order
+not frequency
+
+have independent of use dictionary
+traverse string builder, put into list as you find each one.
+
+return root.toString();
+
+Node
+toString(String word) {
+	// return own string and string of all it's children. 
+	String dict = "";
+	check count, add to string, then do it for each child if its not null
+	
+	for(children) {
+		if(child != null) {
+			dict += child.toString(word + charIndex);
+		}
+		
+	}
+	
+	or just add everything as you build the dictionary, then toString could access
+	
+	return dict;
+}
+
+
+
+Edit Distances
+------------------
+check if a given word is in dictionary, if it is, then return it.
+
+put string into a string builder
+ 
+Deletion: cats
+• Go through, and take out one char of each
+for length
+	new SB
+	sb = deleteCharAt(i);
+	theSet.add(sb.toString);
+
+
+transposition: 
+• swap two adjacent characters
+for length -1
+	StringBuilder sb = new StringBuilder(str);
+	char first = str.charAt(i+1);
+	char second = str.charAt(i);
+	sb.setCharAt(i, firstChar);
+	sb.setCharAt(i+1, secondChar);
+	theSet.add(sb.toString);
+	
+
+alteration:
+• swap 'x' for a every letter of alphabet
+for wordlength
+	new SB
+	for every letter in alphabet
+		stringBuilder.setCharAt(i, (char)j);
+		theSet.add(sb.toString());
+		
+insertion: 
+• inserting every letter in between each letter
+for length + 1 
+	for every letter of alphabet
+		new SB
+		sb = sb.insert(i, (char)j);
+		theSet.add(sb.toString());
+
+
+make sure the makeGuess function returns the newest set of the words
+dictionary can change
+make dictionary needs to overwrite the dictionary
+
+

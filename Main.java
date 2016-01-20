@@ -32,7 +32,6 @@ public class Main {
 		try {
 			suggestion = corrector.suggestSimilarWord(inputWord);
 		} catch (spell.ISpellCorrector.NoSimilarWordFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
