@@ -122,3 +122,9 @@ dictionary can change
 make dictionary needs to overwrite the dictionary
 
 
+
+
+
+Fist word wasn't found ("cares") - should have 6 nodes
+Incorrect node count after 1 add
+add function does not exist

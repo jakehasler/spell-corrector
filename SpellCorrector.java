@@ -59,9 +59,9 @@ public class SpellCorrector  implements ISpellCorrector {
 		sc.useDelimiter("[^a-zA-Z]+");
 		
 		int i = 0;
-		//while(sc.hasNext()) {
-			while(i < 500) {
-			theTrie.buildTree(sc.next(), 0, theTrie.root);
+		while(sc.hasNext()) {
+			//while(i < 1) {
+			theTrie.add(sc.next());
 			i++;
 		}
 		

@@ -25,7 +25,7 @@ public class Trie implements ITrie {
 	String bestWord = "";
 	
 	public void add(String word) {
-		
+		buildTree(word, 0, this.root);
 	}
 	
 	public Node find(String word) {
@@ -150,6 +150,7 @@ public class Trie implements ITrie {
 	public int hashCode() {
 		int MULTIPLIER = 7;
 		int hashCode = this.getNodeCount() * this.getWordCount() * MULTIPLIER;
+		if(hashCode < 0) hashCode = hashCode + hashCode*2;
 		return hashCode;
 	}
 	
