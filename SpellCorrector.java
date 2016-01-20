@@ -73,15 +73,16 @@ public class SpellCorrector  implements ISpellCorrector {
 	}
 
 	public String suggestSimilarWord(String inputWord) throws NoSimilarWordFoundException {	
-
+	
 		if(inputWord != "") {
-			Node found = theTrie.find(inputWord);
+			String lowered = inputWord.toLowerCase();
+			Node found = theTrie.find(lowered);
 			if(found != null) {
-				return inputWord;
+				return lowered;
 			}
-			theTrie.runFunctions(inputWord, theTrie.bigSet);
+			theTrie.runFunctions(lowered, theTrie.bigSet);
 			if(theTrie.bestWord == "" && theTrie.runningFreq == 0) {
-				theTrie.runFunctions(inputWord, theTrie.finalSet);
+				theTrie.runFunctions(lowered, theTrie.finalSet);
 			}
 			else return theTrie.bestWord;
 			
