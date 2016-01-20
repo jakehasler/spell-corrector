@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Scanner;
 
 import spell.ISpellCorrector.NoSimilarWordFoundException;
@@ -74,6 +75,9 @@ public class SpellCorrector  implements ISpellCorrector {
 
 	public String suggestSimilarWord(String inputWord) throws NoSimilarWordFoundException {	
 	
+		theTrie.bigSet = new HashSet<String>();
+		theTrie.finalSet = new HashSet<String>();
+		
 		if(inputWord != "") {
 			String lowered = inputWord.toLowerCase();
 			Node found = theTrie.find(lowered);
