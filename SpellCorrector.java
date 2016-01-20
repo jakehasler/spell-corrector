@@ -76,7 +76,7 @@ public class SpellCorrector  implements ISpellCorrector {
 
 		if(inputWord != "") {
 			Node found = theTrie.find(inputWord);
-			if(found.getCount() != 0) {
+			if(found != null) {
 				return inputWord;
 			}
 			theTrie.runFunctions(inputWord, theTrie.bigSet);

@@ -239,18 +239,20 @@ public class Trie implements ITrie {
 			if(theNodes[position] != null) {
 				if(pos == str.length() - 1) {
 					finalNode = theNodes[position];
-					return finalNode;
+					if(finalNode.getCount() > 0) return finalNode;
+					else return null;
 				}
 				Node newNode = theNodes[position];
 				pos++;
 				return exists(str, pos, newNode);
 			}
 			else {
-				return finalNode;
+				return null;
 			}
 		}
 		else {
-			return finalNode;
+			if(finalNode.getCount() > 0) return finalNode;
+			else return null;
 		}
 	}
 }

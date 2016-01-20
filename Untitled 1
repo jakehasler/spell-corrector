@@ -128,3 +128,6 @@ make dictionary needs to overwrite the dictionary
 Fist word wasn't found ("cares") - should have 6 nodes
 Incorrect node count after 1 add
 add function does not exist
+
+
+in find, check frequency is greater than zero, if not, then return null;
