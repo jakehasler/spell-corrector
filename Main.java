@@ -35,7 +35,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Suggestion is: " + suggestion);
+		System.out.println(suggestion);
 	}
 
 }

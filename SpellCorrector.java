@@ -83,6 +83,7 @@ public class SpellCorrector  implements ISpellCorrector {
 			if(theTrie.bestWord == "" && theTrie.runningFreq == 0) {
 				theTrie.runFunctions(inputWord, theTrie.finalSet);
 			}
+			else return theTrie.bestWord;
 			
 			if(theTrie.bestWord == "" || theTrie.runningFreq == 0) {
 				throw new NoSimilarWordFoundException();
