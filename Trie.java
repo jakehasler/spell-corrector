@@ -114,7 +114,7 @@ public class Trie implements ITrie {
 	
 	
 	public void insertion(String str, Set<String> theSet) {
-		System.out.println("insertion");
+		// System.out.println("insertion");
 		for(int i = 0; i < str.length() + 1; i++) {
 			for(int j = 97; j < 97 + 26; j++) {
 				StringBuilder sb = new StringBuilder(str);

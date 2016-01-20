@@ -79,7 +79,7 @@ public class SpellCorrector  implements ISpellCorrector {
 			Node found = theTrie.find(lowered);
 			if(found != null) {
 				if(found.getCount() != 0) {
-					System.out.println(found.getCount());
+					//System.out.println(found.getCount());
 					return lowered;
 				}
 			}
@@ -92,8 +92,8 @@ public class SpellCorrector  implements ISpellCorrector {
 			}
 			else return theTrie.bestWord;
 			
-			System.out.println(theTrie.bigSet);
-			System.out.println(theTrie.finalSet);
+			//System.out.println(theTrie.bigSet);
+			//System.out.println(theTrie.finalSet);
 			
 			if(theTrie.bestWord == "" || theTrie.runningFreq == 0) {
 				throw new NoSimilarWordFoundException();
